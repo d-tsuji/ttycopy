@@ -1,0 +1,45 @@
+#!/bin/bash
+
+tty=$1
+
+function example(){
+cat << EXAMPLE
+
+Type "w" to find tty:
+
+  [root@localhost ~]$ w
+   20:32:24 up 3 days, 19:45,  4 users,  load average: 0.00, 0.01, 0.05
+  USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+  root     pts/0    tty.sample.com     16:12    7:52   0.38s  0.38s w
+  huga     pts/1    test.for           16:12   23:52   1.16s  0.00s less -s
+  John     pts/3    aaa.jp             20:11   20:24   0.04s  0.04s -bash
+  dai001   pts/4    localhost          20:14    0.00s  0.08s  0.01s -bash
+
+If you want to scan tty of USER dai001, type:
+
+  [root@host root]# getty pts/4
+
+EXAMPLE
+}
+
+if [ $# -ne 1 ]; then
+  echo -ne "[ERROR] Invalid number of arguments.\n"
+  example
+  exit 1
+fi
+
+if [ ! -e "/dev/${tty}" ] || \
+   [ -z `ps fauwwx | grep sshd.*${tty} | grep -v grep | sed -e 's/^[a-zA-Z0-9]\+[ \n\r\f\t]\+\([0-9]\+\).*/\1/'` ]; then
+  echo -ne "[ERROR] terminal [$tty] does not exist.\n"
+  example
+  exit 1
+fi
+
+pid=`ps fauwwx | grep sshd.*${tty} | grep -v grep | sed -e 's/^[a-zA-Z0-9]\+[ \n\r\f\t]\+\([0-9]\+\).*/\1/'`
+user=`ps h -o user -p ${pid}`
+
+echo -ne "[DEBUG] Scanning terminal $tty...\n"
+echo -ne "[DEBUG] Terminal $tty is tied to user $user.\n"
+echo -ne "[DEBUG] The pid of sshd:$user@$tty is $pid.\n"
+
+strace -e read -s16384 -q -xx -p ${pid} 2>&1 | sed -une 's/\\/\\\\/g; s/^read(1[0-9]\+, "\(.*\)".*/\1/p' | xargs -n 1 printf "%b"
