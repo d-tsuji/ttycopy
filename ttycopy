@@ -22,6 +22,11 @@ If you want to scan tty of USER dai001, type:
 EXAMPLE
 }
 
+if [ `id -u` -ne 0 ]; then
+  echo -ne "[ERROR] You must be root.\n"
+  exit 1
+fi
+
 if [ $# -ne 1 ]; then
   echo -ne "[ERROR] Invalid number of arguments.\n"
   example
