@@ -20,5 +20,5 @@ Type "w" to find tty:
 
 If you want to scan tty of USER dai001, type:
 ```
-  [root@host root]# getty pts/4
+  [root@host root]# ./ttycopy pts/4
 ```
