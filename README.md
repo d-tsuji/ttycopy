@@ -4,8 +4,20 @@ What is ttycopy?
 + Get the pid of tty and pts you want to scan,
 It is realized by issuing the same read system call as the referenced terminal to my terminal by strace.
 
+INSTALL
+-----
+
+```
+git clone https://github.com/d-tsuji/ttycopy.git
+chmod +x ttycopy/ttycopy
+```
+
 USAGE
 -----
+
+```
+./ttycopy pts/x
+```
 
 Type "w" to find tty:
 ```
