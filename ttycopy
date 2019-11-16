@@ -53,4 +53,4 @@ echo -ne "[DEBUG] Scanning terminal $tty...\n"
 echo -ne "[DEBUG] Terminal $tty is tied to user $user.\n"
 echo -ne "[DEBUG] The pid of sshd:$user@$tty is $pid.\n"
 
-strace -e read -s16384 -q -xx -p ${pid} 2>&1 | sed -une 's/\\/\\\\/g; s/^read(1[0-9]\+, "\(.*\)".*/\1/p' | xargs -n 1 printf "%b"
+strace -e read -s16384 -q -x -p ${pid} 2>&1 | sed -une "s/^read([0-9]\+, \"\(.*\)\".*/echo -n \$'\1'/p" | bash
