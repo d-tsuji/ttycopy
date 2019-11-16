@@ -1,6 +1,6 @@
 What is ttycopy?
 -----
-+ This is a simple tool that can scan terminals of other users through tty or pts.
++ This is a simple tool that can scan terminals of other users through tty or pts, inspired by [ttylog](https://github.com/gitpan/ttylog).
 + Get the pid of tty and pts you want to scan,
 It is realized by issuing the same read system call as the referenced terminal to my terminal by strace.
 
@@ -9,7 +9,7 @@ INSTALL
 
 ```
 git clone https://github.com/d-tsuji/ttycopy.git
-chmod +x ttycopy/ttycopy
+cd ttycopy
 ```
 
 USAGE
