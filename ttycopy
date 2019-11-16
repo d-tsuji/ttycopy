@@ -40,6 +40,12 @@ if [ ! -e "/dev/${tty}" ] || \
   exit 1
 fi
 
+if ! [ -x "$(strace)" ];then
+  echo -ne "[ERROR] strace could not be executed.\n"
+  echo -ne "Please check if strace is installed or executed.\n"
+  exit 1
+fi
+
 pid=`ps fauwwx | grep sshd.*${tty} | grep -v grep | sed -e 's/^[a-zA-Z0-9]\+[ \n\r\f\t]\+\([0-9]\+\).*/\1/'`
 user=`ps h -o user -p ${pid}`
 
