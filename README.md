@@ -34,3 +34,5 @@ If you want to scan tty of USER dai001, type:
 ```
   [root@host root]# ./ttycopy pts/4
 ```
+
+![ttycopy](https://user-images.githubusercontent.com/24369487/68991645-2bc1c780-08a4-11ea-81c8-3f4af99bedb2.gif)
