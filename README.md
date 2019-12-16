@@ -12,6 +12,11 @@ git clone https://github.com/d-tsuji/ttycopy.git
 cd ttycopy
 ```
 
+REQUIRE
+-----
+
+- strace
+
 USAGE
 -----
 
