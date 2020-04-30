@@ -1,15 +1,34 @@
+ttycopy [![GitHub release](https://img.shields.io/github/v/release/d-tsuji/ttycopy.svg)](https://github.com/d-tsuji/ttycopy/releases/latest)
+=======
+
+<img src="img/logo.png" width="300">
+
 What is ttycopy?
 -----
 + This is a simple tool that can scan terminals of other users through tty or pts, inspired by [ttylog](https://github.com/gitpan/ttylog).
 + Get the pid of tty and pts you want to scan,
 It is realized by issuing the same read system call as the referenced terminal to my terminal by strace.
 
+<table>
+<thead><tr><th>copied</th> <th>ttycopy</th></tr></thead>
+<tbody>
+<tr>
+<td>
+<img src="./svg/copied.svg">
+</td>
+<td>
+<img src="./svg/ttycopy.svg">
+</td>
+</tr>
+
+</tbody>
+</table>
+
 INSTALL
 -----
 
 ```
-git clone https://github.com/d-tsuji/ttycopy.git
-cd ttycopy
+wget https://github.com/d-tsuji/ttycopy/releases/latest/download/ttycopy && chmod +x ttycopy
 ```
 
 REQUIRE
@@ -39,5 +58,3 @@ If you want to scan tty of USER dai001, type:
 ```
   [root@host root]# ./ttycopy pts/4
 ```
-
-![ttycopy](https://user-images.githubusercontent.com/24369487/68991645-2bc1c780-08a4-11ea-81c8-3f4af99bedb2.gif)
