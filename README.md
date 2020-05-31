@@ -9,20 +9,7 @@ What is ttycopy?
 + Get the pid of tty and pts you want to scan,
 It is realized by issuing the same read system call as the referenced terminal to my terminal by strace.
 
-<table>
-<thead><tr><th>copied</th> <th>ttycopy</th></tr></thead>
-<tbody>
-<tr>
-<td>
-<img src="./svg/copied.svg">
-</td>
-<td>
-<img src="./svg/ttycopy.svg">
-</td>
-</tr>
-
-</tbody>
-</table>
+![ttycopy.gif](./gif/ttycopy.gif)
 
 INSTALL
 -----
